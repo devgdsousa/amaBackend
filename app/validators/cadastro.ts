@@ -7,10 +7,32 @@ export const createCadastroValidator = vine.compile(
     responsaveis: vine.string(),
     cpf: vine.string(),
     contatos: vine.string(),
-    foto: vine.file({ size: '5mb', extnames: ['jpg', 'jpeg', 'png', 'pdf'] }).optional(),
-    documento: vine.file({ size: '5mb', extnames: ['jpg', 'jpeg', 'png', 'pdf'] }).optional(),
+    foto: vine
+      .file({
+        size: '2mb',
+        extnames: ['jpg', 'png', 'jpeg'],
+      })
+      .optional(),
+
+    documento: vine
+      .file({
+        size: '5mb',
+        extnames: ['pdf'],
+      })
+      .optional(),
+
     documento_responsaveis: vine
-      .file({ size: '5mb', extnames: ['jpg', 'jpeg', 'png', 'pdf'] })
+      .file({
+        size: '5mb',
+        extnames: ['pdf'],
+      })
+      .optional(),
+
+    laudo: vine
+      .file({
+        size: '5mb',
+        extnames: ['pdf', 'jpg', 'png'],
+      })
       .optional(),
 
     diagnostico: vine.string(),
@@ -18,7 +40,6 @@ export const createCadastroValidator = vine.compile(
     tratamentos: vine.string(),
     medicacoes: vine.string(),
     local_atendimento: vine.string().optional(),
-    laudo: vine.file({ size: '5mb', extnames: ['jpg', 'jpeg', 'png', 'pdf'] }).optional(),
 
     renda_bruta_familiar: vine.string(),
     pessoas_residencia: vine.string(),
